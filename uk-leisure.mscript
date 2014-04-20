@@ -1,0 +1,4 @@
+clear-map
+﻿use-ruleset location=/home/greg/Apps/Maperitive/UserRules/uk-leisure/uk-leisure.mrules
+load-source /home/greg/Desktop/map.osm
+generate-contours
