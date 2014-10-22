@@ -34,12 +34,14 @@ features
 		// TODO wind turbine
 
 	lines
-		// TODO motorway : highway=motorway
-		trunk road : highway=trunk
-		a road : highway=primary
-		b road : highway=secondary
-		minor road : highway=tertiary OR highway=unclassified OR highway=residential
+		b road : highway=secondary OR highway=secondary_link
+		a road : highway=primary OR highway=primary_link
+		trunk road : highway=trunk OR highway=trunk_link
+		motorway road : highway=motorway OR highway=motorway_link
+		
+		minor road : highway=tertiary OR highway=tertiary_link OR highway=unclassified OR highway=residential
 		tiny road : highway=service
+
 		track solid : highway=track AND (tracktype=grade1 OR tracktype=grade2)
 		track soft : highway=track AND (tracktype=grade3 OR tracktype=grade4 OR tracktype=grade5 OR NOT tracktype)
 
@@ -368,7 +370,17 @@ rules
 			border-color : black
 			border-width : 30%
 			border-opacity : 1
-		if : trunk road
+
+		if : motorway road
+			define
+				line-color : RoyalBlue
+				line-width : 13:3;16:4.5;18:7
+			draw : line
+			define
+				text : ref
+			draw : text
+				
+		elseif : trunk road
 			define
 				line-color : green
 				line-width : 13:3;16:4.5;18:7
