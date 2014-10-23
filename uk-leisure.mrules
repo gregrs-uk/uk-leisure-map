@@ -34,11 +34,14 @@ features
 		// TODO wind turbine
 
 	lines
-		b road : highway=secondary OR highway=secondary_link
-		a road : highway=primary OR highway=primary_link
-		trunk road : highway=trunk OR highway=trunk_link
+		// OSGB grid for use with OSM files available at
+		// http://www.rogercalvert.me.uk/OSM/GBGrid/
+		grid : national_grid
+
 		motorway road : highway=motorway OR highway=motorway_link
-		
+		trunk road : highway=trunk OR highway=trunk_link
+		a road : highway=primary OR highway=primary_link
+		b road : highway=secondary OR highway=secondary_link
 		minor road : highway=tertiary OR highway=tertiary_link OR highway=unclassified OR highway=residential
 		tiny road : highway=service
 
@@ -113,6 +116,15 @@ properties
 rules
 
 	// N.B. earlier rules are printed over the top of later rules
+
+	// ----- GRID -----
+
+	target : grid
+		define
+			line-color : DodgerBlue
+			line-opacity : 0.5
+			line-width : 1
+		draw : line
 
 	// ----- LABELS -----
 
@@ -373,7 +385,7 @@ rules
 
 		if : motorway road
 			define
-				line-color : RoyalBlue
+				line-color : DodgerBlue
 				line-width : 13:3;16:4.5;18:7
 			draw : line
 			define
@@ -382,7 +394,7 @@ rules
 				
 		elseif : trunk road
 			define
-				line-color : green
+				line-color : ForestGreen
 				line-width : 13:3;16:4.5;18:7
 			draw : line
 			define
@@ -391,7 +403,7 @@ rules
 
 		elseif : a road
 			define
-				line-color : green
+				line-color : ForestGreen
 				line-width : 13:3;16:4.5;18:7
 			draw : line
 			define
